@@ -57,10 +57,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          ElevatedButton.icon(
-                              onPressed: () {},
-                              icon: Icon(Icons.person, size: 24.0),
-                              label: Text('Edit Profile')),
+                          FloatingActionButton.extended(
+                            label: Text('Edit Profile'),
+                            backgroundColor: Colors.black,
+                            icon: Icon(
+                              Icons.person,
+                              size: 24,
+                            ),
+                            onPressed: () {},
+                          ),
                         ],
                       ),
                     ),
@@ -70,13 +75,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Icon(
-                            Icons.logout,
-                            color: Colors.black,
-                            size: 40,
-                          ),
-                          Text(
-                            'Logout',
+                          FloatingActionButton.extended(
+                            label: Text('Logout'),
+                            backgroundColor: Colors.black,
+                            icon: Icon(
+                              Icons.person,
+                              size: 24,
+                            ),
+                            onPressed: () {},
                           ),
                         ],
                       ),
