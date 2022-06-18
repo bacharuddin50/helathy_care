@@ -3,6 +3,7 @@ import 'package:helathy_care/screens/artikel.dart';
 import 'package:helathy_care/screens/dokter.dart';
 import 'package:helathy_care/screens/home.dart';
 import 'package:helathy_care/screens/obat.dart';
+import 'package:helathy_care/screens/profile.dart';
 import 'package:helathy_care/screens/signin.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: MyBottomBar(),
-      home: SignInPageWidget(),
+      home: ProfileScreen(),
     );
   }
 }
