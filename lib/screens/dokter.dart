@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class DokterWidget extends StatefulWidget {
   @override
@@ -6,19 +9,34 @@ class DokterWidget extends StatefulWidget {
 }
 
 class _DokterWidgetState extends State<DokterWidget> {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
+  final String url = "http://127.0.0.1:8000/api/dokter";
+
+  Future<List<dynamic>> getDokter() async {
+    var response = await http.get(Uri.parse(url));
+    return json.decode(response.body)['data'];
+  }
+
+  // Future<List> getDokter() async {
+  //   final response =
+  //       await http.get(Uri.parse('https://reqres.in/api/users?page=2'));
+  //   return json.decode(response.body);
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: Color(0xFF00F6CA),
         automaticallyImplyLeading: false,
-        leading: Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-          size: 24,
+        leading: InkWell(
+          onTap: () async {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+            size: 25,
+          ),
         ),
         title: Align(
           alignment: AlignmentDirectional(-0.3, 0),
@@ -38,31 +56,15 @@ class _DokterWidgetState extends State<DokterWidget> {
         centerTitle: false,
         elevation: 2,
       ),
-      backgroundColor: Color(0xFF00F6CA),
-      body: SafeArea(
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: ListView(
-                  padding: EdgeInsets.zero,
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    Container(
-                      width: 100,
-                      height: 100,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFEEEEEE),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+      body: FutureBuilder<List<dynamic>>(
+        future: getDokter(),
+        builder: (Buildcontext, AsyncSnapshot snapshot) {
+          if (snapshot.hasData) {
+            return Text('Data Oke');
+          } else {
+            return Text('data EROR');
+          }
+        },
       ),
     );
   }
