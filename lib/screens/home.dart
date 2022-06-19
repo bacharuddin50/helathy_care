@@ -1,20 +1,26 @@
+import 'package:helathy_care/main.dart';
 import 'package:helathy_care/screens/dokter.dart';
 import 'package:helathy_care/screens/obat.dart';
 import 'package:helathy_care/screens/artikel.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:helathy_care/screens/profile.dart';
 
 class HomePageWidget extends StatefulWidget {
   @override
   _HomePageWidgetState createState() => _HomePageWidgetState();
 }
 
+Widget build(BuildContext context) {
+  return new MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: MyBottomBar(),
+  );
+}
+
 class _HomePageWidgetState extends State<HomePageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  final List<String> imgList = [
-    'assets/images/slider.png',
-    'assets/images/23.png',
-  ];
+  final List<String> imgList = ['assets/images/2.png', 'assets/images/4.png'];
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +29,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       appBar: AppBar(
         backgroundColor: Color(0xFF00F6CA),
         automaticallyImplyLeading: false,
-        leading: Icon(
-          Icons.account_circle,
-          color: Colors.black,
-          size: 30,
+        leading: InkWell(
+          onTap: () async {
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ProfileScreen(),
+              ),
+            );
+          },
+          child: Icon(
+            Icons.account_circle_rounded,
+            color: Colors.black,
+            size: 30,
+          ),
         ),
         title: Align(
           alignment: AlignmentDirectional(0, 0),
@@ -237,7 +253,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         await Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => ObatWidget(),
+                                            builder: (context) =>
+                                                DokterWidget(),
                                           ),
                                         );
                                       },

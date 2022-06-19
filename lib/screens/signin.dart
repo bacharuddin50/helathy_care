@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:helathy_care/screens/home.dart';
 import 'package:helathy_care/screens/signup.dart';
 import 'package:helathy_care/widget/widget.dart';
 
@@ -45,7 +46,12 @@ class _SignInPageWidgetState extends State<SignInPageWidget> {
                 SizedBox(
                   height: 20,
                 ),
-                signInSignUpButton(context, true, () {}),
+                signInSignUpButton(context, true, () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: ((context) => HomePageWidget())));
+                }),
                 signUpOption()
               ],
             ),

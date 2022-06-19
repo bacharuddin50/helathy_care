@@ -16,10 +16,15 @@ class _ArtikelWidgetState extends State<ArtikelWidget> {
       appBar: AppBar(
         backgroundColor: Color(0xFF00F6CA),
         automaticallyImplyLeading: false,
-        leading: Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-          size: 25,
+        leading: InkWell(
+          onTap: () async {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+            size: 25,
+          ),
         ),
         title: Align(
           alignment: AlignmentDirectional(-0.3, 0),
@@ -111,9 +116,7 @@ class _ArtikelWidgetState extends State<ArtikelWidget> {
                                     enableJavaScript: true,
                                     webOnlyWindowName: '_self',
                                   );
-                                } else {
-                                  print("aksi tidak mendukung");
-                                }
+                                } else {}
                               },
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -122,7 +125,7 @@ class _ArtikelWidgetState extends State<ArtikelWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Image.asset(
-                                      'assets/images/23.png',
+                                      'assets/images/pola-hidup.png',
                                       width: 350,
                                       height: 200,
                                       fit: BoxFit.contain,
@@ -153,9 +156,7 @@ class _ArtikelWidgetState extends State<ArtikelWidget> {
                                     enableJavaScript: true,
                                     webOnlyWindowName: '_self',
                                   );
-                                } else {
-                                  print("aksi tidak mendukung");
-                                }
+                                } else {}
                               },
                               child: Card(
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -164,13 +165,53 @@ class _ArtikelWidgetState extends State<ArtikelWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Image.asset(
-                                      'assets/images/23.png',
+                                      'assets/images/diet.png',
                                       width: 350,
                                       height: 200,
                                       fit: BoxFit.contain,
                                     ),
                                     Text(
                                       'Tips Diet Sehat',
+                                      style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                            child: InkWell(
+                              onTap: () async {
+                                String url =
+                                    'https://halosehat.com/penyakit/stroke/penyebab-stroke-hemoragik#:~:text=5%20Penyebab%20Stroke%20Hemoragik%20dan%20Cara%20Mengatasinya%201,Abnormal%204%20Angiopati%20Amiloid%20Serebral%205%20Konsumsi%20Obat-obatan';
+                                if (await canLaunch(url)) {
+                                  await launch(
+                                    url,
+                                    forceSafariVC: true,
+                                    forceWebView: true,
+                                    enableJavaScript: true,
+                                    webOnlyWindowName: '_self',
+                                  );
+                                } else {}
+                              },
+                              child: Card(
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                color: Color(0xFFF5F5F5),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/stroke.png',
+                                      width: 350,
+                                      height: 200,
+                                      fit: BoxFit.contain,
+                                    ),
+                                    Text(
+                                      'Cara mengatasi Stroke',
                                       style: TextStyle(
                                         fontFamily: 'Poppins',
                                         fontSize: 15,
